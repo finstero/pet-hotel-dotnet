@@ -36,6 +36,6 @@ hey
             [] Put (check in/out pet)
             [] Delete (remove pet)
     [] Test controllers
-        [] Postman
-        [] Jest (front-end)
+        [x] Postman
+        [x] Jest (front-end)
     [] Make sure it works 😎
