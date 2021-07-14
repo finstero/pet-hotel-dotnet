@@ -5,14 +5,16 @@ hi owen
 hey
 
 [] build backend for pet hotel
-    [] make model for pet owners
+    [x] make model for pet owners
     [] make model for pets
-    [] Add pets & petowners to ApplicationContext
+    [x] Add petowners to ApplicationContext
+    [] Add pets to ApplicationContext
     [] Migrate db for both pets & petowners tables
-        [] petowners
-            [] id
-            [] name
-            [] emailAddress
+        [x] petowners
+            [x] id
+            [x] name
+            [x] emailAddress
+                [] ***(NEEDS TO BE VALIDATED)***
             [] petCount
         [] pets
             [] name
@@ -24,8 +26,8 @@ hey
             [] petOwner (link entire petOwner object)
     [] Create controllers
         [] PetOwners
-            [] Finish GET route
-            [] Post (add new pet owner)
+            [x] Finish GET route
+            [x] Post (add new pet owner)
             [] Put 
             [] Delete (remove pet owner)
         [] Pets

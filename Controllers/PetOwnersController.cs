@@ -20,7 +20,31 @@ namespace pet_hotel.Controllers
         // occur when the route is missing in this controller
         [HttpGet]
         public IEnumerable<PetOwner> GetPetOwners() {
-            return new List<PetOwner>();
+            var petOwners = _context.PetOwners.ToList();
+            return  petOwners;
+        }
+
+        [HttpPost]
+        public IActionResult Post([FromBody] PetOwner petOwner)
+        {
+            _context.Add(petOwner);
+            _context.SaveChanges();
+            Console.WriteLine(CreatedAtAction(nameof(GetPetOwners), petOwner));
+            return CreatedAtAction(nameof(GetPetOwners), petOwner);
+        }
+        //hey
+        [HttpDelete("{id}")]
+
+        public IActionResult DeletePetOwner(int id)
+        {
+            PetOwner ownerToDelete = _context.PetOwners.Find(id);
+            if(ownerToDelete == null) return NotFound();
+
+            _context.PetOwners.Remove(ownerToDelete);
+            _context.SaveChanges();
+
+            return NoContent();
+
         }
     }
 }
