@@ -5,12 +5,12 @@ using System;
 
 namespace pet_hotel
 {
-    public enum PetBreedType {
+    public enum PetBreedType
+    {
 
         Shepherd, // 54.2 // 0
         Poodle, // 1
         Beagle, // 2
-        Cat,
         Bulldog, // 3
         Terrier, // 4
         Boxer, // 5
@@ -18,30 +18,47 @@ namespace pet_hotel
         Retriever // 7
 
     }
-    public enum PetColorType {}
-    public class Pet {
-        public string name {get; set;}
-        public PetColorType color {get; set;}
+    public enum PetColorType
+    {
+        Black,
+        White,
+        Golden,
+        Spotted,
+        Tricolor
 
-        
-        public DateTime? checkedInAt {get; set;}
-        
+    }
+    public class Pet
+    {
+
+        [Required]
+        public string name { get; set; }
+
+        [Required]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public PetColorType color { get; set; }
+
+
+        public DateTime? checkedInAt { get; set; }
+
+        [Required]
         [ForeignKey("PetOwners")]
+        public int petOwnerid { get; set; }
 
-        public int petOwnerid {get; set;}  
+        public int id { get; set; }
 
-        public int id {get; set;}  
+        [Required]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public PetBreedType breed { get; set; }
 
-        public PetBreedType breed {get; set;}
-
-        public PetOwner petOwner {get; set;}
+        public PetOwner petOwner { get; set; }
 
         // public void checkIn()
         // {
         //     checkedInAt 
         // }
 
-        public void checkOut() {
+        public void checkOut()
+        {
             checkedInAt = null;
         }
     }

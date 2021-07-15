@@ -8,7 +8,7 @@ hey
     [x] make model for pet owners
     [] make model for pets
     [x] Add petowners to ApplicationContext
-    [] Add pets to ApplicationContext
+    [x] Add pets to ApplicationContext
     [] Migrate db for both pets & petowners tables
         [x] petowners
             [x] id
@@ -29,7 +29,7 @@ hey
             [x] Finish GET route
             [x] Post (add new pet owner)
             [] Put 
-            [] Delete (remove pet owner)
+            [x] Delete (remove pet owner)
         [] Pets
             [] Finish GET route
             [] Post (add new pet)
