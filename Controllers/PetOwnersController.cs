@@ -20,8 +20,12 @@ namespace pet_hotel.Controllers
         // occur when the route is missing in this controller
         [HttpGet]
         public IEnumerable<PetOwner> GetPetOwners() {
-            var petOwners = _context.PetOwners.ToList();
-            return  petOwners;
+            // return new List<PetOwner>();
+            var petOwners = _context.PetOwners
+            .Include(petOwner => petOwner.pets)
+            .ToList();
+
+            return petOwners;
         }
 
         [HttpPost]
@@ -29,7 +33,7 @@ namespace pet_hotel.Controllers
         {
             _context.Add(petOwner);
             _context.SaveChanges();
-            Console.WriteLine(CreatedAtAction(nameof(GetPetOwners), petOwner));
+            Console.WriteLine(nameof(GetPetOwners), petOwner);
             return CreatedAtAction(nameof(GetPetOwners), petOwner);
         }
         //hey

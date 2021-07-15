@@ -8,15 +8,29 @@ namespace pet_hotel
 {
     public class PetOwner
     {
-        public int id {get; set;}
+        public int id { get; set; }
 
         [Required]
-        public string name {get; set;}
+        public string name { get; set; }
 
-        [Required]
-        public string emailAddress {get; set;}
+        [Display(Name = "Email address")]
+        [Required(ErrorMessage = "The email address is required")]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
+        public string emailAddress { get; set; }
+
+        [NotMapped]
+        public int petCount
+        {
+            get
+            {
+                return (pets == null ? 0 : pets.Count);
+            }
+        }
+
+        [JsonIgnore]
+        public List<Pet> pets { get; set; }
 
     }
 
-    
+
 }

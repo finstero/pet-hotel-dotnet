@@ -54,7 +54,6 @@ namespace pet_hotel
 
         public void checkIn()
         {
-            // DateTimeOffset checkedInAt = (DateTimeOffset)DateTime.UtcNow;
             checkedInAt = DateTime.Now;
         }
 
