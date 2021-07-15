@@ -52,10 +52,11 @@ namespace pet_hotel
 
         public PetOwner petOwner { get; set; }
 
-        // public void checkIn()
-        // {
-        //     checkedInAt 
-        // }
+        public void checkIn()
+        {
+            // DateTimeOffset checkedInAt = (DateTimeOffset)DateTime.UtcNow;
+            checkedInAt = DateTime.Now;
+        }
 
         public void checkOut()
         {

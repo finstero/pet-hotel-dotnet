@@ -51,6 +51,21 @@ namespace pet_hotel.Controllers
             return NoContent();
         }
         
+
+    [HttpPut("{id}/checkin")]
+
+    public IActionResult CheckIn(int id)
+    {
+        Pet petToCheckIn = _context.Pets.Find(id);
+        if (petToCheckIn == null) return NotFound();
+
+        petToCheckIn.checkIn();
+        _context.Update(petToCheckIn);
+        _context.SaveChanges();
+
+        return Ok();
+    }
+
         // [HttpGet]
         // [Route("test")]
         // public IEnumerable<Pet> GetPets() {
