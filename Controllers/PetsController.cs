@@ -33,6 +33,18 @@ namespace pet_hotel.Controllers
         [HttpPost]
 
         public IActionResult Post([FromBody] Pet pet){
+
+            PetOwner owner = _context.PetOwners
+                .SingleOrDefault(m => m.id == pet.petOwnerid);
+
+            if (owner == null) // might just be security, in case owner doesn't exist?
+            {
+                ModelState.AddModelError("petOwnerId", "Invalid Pet Owner ID");
+                return ValidationProblem(ModelState);
+            }
+
+
+
             _context.Add(pet);
             _context.SaveChanges();
             return CreatedAtAction(nameof(GetPets), pet);
